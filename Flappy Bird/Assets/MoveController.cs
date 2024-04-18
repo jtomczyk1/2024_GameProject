@@ -15,19 +15,27 @@ public class MoveController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x + Speed *Time.deltaTime, transform.position.y, transform.position.z);
-        
-        if(transform.position.x < DespawnPoint)
+
+        if (BirdController.GameOver || !BirdController.HasStarted)
         {
+            return;
 
-            transform.position = new Vector3(SpawnPoint, Random.Range(MinY, MaxY), transform.position.z);
+        }
+        {
+            transform.position = new Vector3(transform.position.x + Speed * Time.deltaTime, transform.position.y, transform.position.z);
 
+            if (transform.position.x < DespawnPoint)
+            {
+
+                transform.position = new Vector3(SpawnPoint, Random.Range(MinY, MaxY), transform.position.z);
+
+            }
         }
     }
 }

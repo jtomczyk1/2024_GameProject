@@ -43,6 +43,11 @@ public class BirdController : MonoBehaviour
         Debug.Log("Die!");
         GameOver = true;
         gameOverScreen.SetActive(true);
+
+        if(Points> PlayerPrefs.GetInt("Highscore"))
+        {
+            PlayerPrefs.SetInt("Highscore", Points);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
